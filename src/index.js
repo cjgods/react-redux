@@ -5,6 +5,7 @@ import './index.css';
 import Header from './Header'
 import Content from './Content'
 import registerServiceWorker from './registerServiceWorker';
+import { Provider } from './react-redux'
 
 //创建Store
 function createStore (reducer) {
@@ -22,9 +23,8 @@ function createStore (reducer) {
   
   //改变主题
   const themeReducer = (state, action) => {
-      debugger
     if (!state) return {
-      themeColor: 'red'
+      themeColor: 'blue'
     }
     switch (action.type) {
       case 'CHANGE_COLOR':
@@ -37,16 +37,7 @@ function createStore (reducer) {
   const store = createStore(themeReducer)
 
 
-console.info(store)
 class Index extends Component {
- 
-  static childrenContextTypes={
-      store:PropTypes.object
-  }
-
-  getChildContext () {
-    return { store }
-  }
 
   render () {
     return (
@@ -59,7 +50,9 @@ class Index extends Component {
 }
 
 ReactDOM.render(
-  <Index />,
+  <Provider store={store}>
+    <Index />
+  </Provider>,
   document.getElementById('root')
 )
 registerServiceWorker();
