@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import PropTypes from 'prop-types'
 import './index.css';
-import Header from './Header'
-import Content from './Content'
+import Header from './containers/Header'
+import Content from './containers/Content'
 import registerServiceWorker from './registerServiceWorker';
 
 
